@@ -6,19 +6,19 @@
  * @license   proprietary
  */
 
-namespace Phlexible\Bundle\MediaManagerBundle\Site;
+namespace Phlexible\Bundle\MediaManagerBundle\Volume;
 
 use Doctrine\ORM\EntityManager;
-use Phlexible\Bundle\MediaManagerBundle\Entity\FolderUsage;
-use Phlexible\Bundle\MediaSiteBundle\Model\FolderInterface;
+use Phlexible\Bundle\MediaManagerBundle\Entity\FileUsage;
+use Phlexible\Component\Volume\Model\FileInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
 /**
- * Delete folder checker
+ * Delete file checker
  *
  * @author Stephan Wentz <sw@brainbits.net>
  */
-class DeleteFolderChecker
+class DeleteFileChecker
 {
     /**
      * @var EntityManager
@@ -43,13 +43,13 @@ class DeleteFolderChecker
     }
 
     /**
-     * @param FolderInterface $folder
+     * @param FileInterface $file
      *
      * @return bool
      */
-    public function isDeleteAllowed(FolderInterface $folder)
+    public function isDeleteAllowed(FileInterface $file)
     {
-        if (!$this->securityContext->isGranted('FOLDER_DELETE', $folder)) {
+        if (!$this->securityContext->isGranted('FILE_DELETE', $file)) {
             return false;
         }
 
@@ -57,14 +57,14 @@ class DeleteFolderChecker
             return true;
         }
 
-        $folderUsageRepository = $this->entityManager->getRepository('PhlexibleMediaManagerBundle:FolderUsage');
-        $folderUsages = $folderUsageRepository->findBy(['folder' => $folder]);
+        $fileUsageRepository = $this->entityManager->getRepository('PhlexibleMediaManagerBundle:FileUsage');
+        $fileUsages = $fileUsageRepository->findBy(['file' => $file]);
 
-        foreach ($folderUsages as $folderUsage) {
-            if (in_array($folderUsage->getStatus(), [FolderUsage::STATUS_ONLINE, FolderUsage::STATUS_LATEST])) {
+        foreach ($fileUsages as $fileUsage) {
+            if (in_array($fileUsage->getStatus(), [FileUsage::STATUS_ONLINE, FileUsage::STATUS_LATEST])) {
                 return false;
             }
-            if ($folderUsage->getStatus() === FolderUsage::STATUS_OLD && $this->deletePolicy === 'hide_old') {
+            if ($fileUsage->getStatus() === FileUsage::STATUS_OLD && $this->deletePolicy === 'hide_old') {
                 return false;
             }
         }

@@ -6,17 +6,41 @@
  * @license   proprietary
  */
 
-namespace Phlexible\Bundle\MediaManagerBundle\Site;
+namespace Phlexible\Bundle\MediaManagerBundle\Volume;
 
-use Phlexible\Bundle\MediaSiteBundle\Model\FolderInterface;
+use Phlexible\Component\Volume\Model\FileInterface;
 
 /**
- * Extended folder interface
+ * File interface
  *
  * @author Stephan Wentz <sw@brainbits.net>
  */
-interface ExtendedFolderInterface extends FolderInterface
+interface ExtendedFileInterface extends FileInterface
 {
+    /**
+     * @param string $documenttype
+     *
+     * @return $this
+     */
+    public function setDocumenttype($documenttype);
+
+    /**
+     * @return string
+     */
+    public function getDocumenttype();
+
+    /**
+     * @param string $assetType
+     *
+     * @return $this
+     */
+    public function setAssetType($assetType);
+
+    /**
+     * @return string
+     */
+    public function getAssetType();
+
     /**
      * @param array $metasets
      *

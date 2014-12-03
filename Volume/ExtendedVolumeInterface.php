@@ -6,19 +6,16 @@
  * @license   proprietary
  */
 
-namespace Phlexible\Bundle\MediaManagerBundle\Site;
+namespace Phlexible\Bundle\MediaManagerBundle\Volume;
 
-use Phlexible\Bundle\MediaSiteBundle\Site\SiteInterface;
-use Phlexible\Bundle\MediaSiteBundle\Model\FileInterface;
-use Phlexible\Bundle\MediaSiteBundle\Model\FolderInterface;
+use Phlexible\Component\Volume\VolumeInterface;
 
 /**
- * Media site interface
- * Represents a complete set of classes used to get a virtual set of folders and files
+ * Extended volume interface
  *
  * @author Stephan Wentz <sw@brainbits.net>
  */
-interface ExtendedSiteInterface extends SiteInterface
+interface ExtendedVolumeInterface extends VolumeInterface
 {
     /**
      * @param ExtendedFolderInterface $folder

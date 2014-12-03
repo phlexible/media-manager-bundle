@@ -6,20 +6,20 @@
  * @license   proprietary
  */
 
-namespace Phlexible\Bundle\MediaManagerBundle\Site;
+namespace Phlexible\Bundle\MediaManagerBundle\Volume;
 
 use Phlexible\Bundle\MediaManagerBundle\MediaManagerEvents;
-use Phlexible\Bundle\MediaSiteBundle\Event\FileEvent;
-use Phlexible\Bundle\MediaSiteBundle\Event\FolderEvent;
-use Phlexible\Bundle\MediaSiteBundle\Exception\IOException;
-use Phlexible\Bundle\MediaSiteBundle\Site\Site;
+use Phlexible\Component\Volume\Event\FileEvent;
+use Phlexible\Component\Volume\Event\FolderEvent;
+use Phlexible\Component\Volume\Exception\IOException;
+use Phlexible\Component\Volume\Volume;
 
 /**
- * Site
+ * Extended volume
  *
  * @author Stephan Wentz <sw@brainbits.net>
  */
-class ExtendedSite extends Site implements ExtendedSiteInterface
+class ExtendedVolume extends Volume implements ExtendedVolumeInterface
 {
     /**
      * {@inheritdoc}
