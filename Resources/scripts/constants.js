@@ -1,18 +1,4 @@
-Ext.namespace(
-    'Phlexible.mediamanager.menuhandle',
-    'Phlexible.mediamanager.model',
-    'Phlexible.mediamanager.templates',
-    'Phlexible.mediamanager.util'
-);
-
-Phlexible.EntryManager.register('mediamanager', function (params) {
-    return {
-        handler: Phlexible.LoadHandler.handlePanel,
-        identifier: 'Phlexible_mediamanager_MediamanagerPanel',
-        handleTarget: Phlexible.mediamanager.MediamanagerPanel,
-        params: params
-    };
-});
+Ext.namespace('Phlexible.mediamanager');
 
 Phlexible.mediamanager.IMAGE = 'IMAGE';
 Phlexible.mediamanager.VIDEO = 'VIDEO';
@@ -33,10 +19,4 @@ Phlexible.mediamanager.Rights = {
     FILE_MODIFY: 'FILE_MODIFY',
     FILE_DELETE: 'FILE_DELETE',
     FILE_DOWNLOAD: 'FILE_DOWNLOAD'
-};
-
-Phlexible.mediamanager.DeletePolicy = {
-    DELETE_ALL: 'delete_all',
-    DELETE_OLD: 'delete_old',
-    HIDE_OLD: 'hide_old'
 };
