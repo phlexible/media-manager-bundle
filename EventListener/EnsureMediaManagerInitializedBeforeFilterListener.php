@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the phlexible package.
+ *
+ * (c) Stephan Wentz <sw@brainbits.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Phlexible\Bundle\MediaManagerBundle\EventListener;
 
@@ -7,11 +15,11 @@ use Phlexible\Component\Volume\VolumeManager;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
 /**
- * Before Controller Event
+ * Ensure media manager initialized before filter listener
  *
  * @author Tim Hoepfner <thoepfner@brainbits.net>
  */
-class EnsureMediaManagerInitializedBeforeFilter
+class EnsureMediaManagerInitializedBeforeFilterListener
 {
 
     /**
